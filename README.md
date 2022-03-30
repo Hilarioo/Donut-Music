@@ -5,12 +5,11 @@
 
 ### Group Members:
 
-Name            |   Instrument      |   Visualizer
---------------------------------------------------------
-Jose Gonzalez       Guitar              [visualizer]
-Justin Diones       [instrument]        [visualizer]     
-Rui Qi Huang        [instrument]        [visualizer]
-
+| Name           | Instrument    | Visualizer   |
+| -------------- | -----------   | ----------   |
+| Jose Gonzalez  | guitar        | [visualizer] |
+| Justin Diones  | [instrument]  | [visualizer] |
+| Rui Qi Huang   | [instrument]  | [visualizer] |
 
 
 ## Client
