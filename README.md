@@ -3,6 +3,20 @@
 
 CSC 600 musical application. Get ready to shred.
 
+# 🍩 Donut Project CSC600 
+
+
+### Group Members:
+
+`
+Name            |   Instrument      |   Visualizer
+--------------------------------------------------------
+Jose Gonzalez       Guitar              [visualizer]
+Justin Diones       [instrument]        [visualizer]     
+Rui Qi Huang        [instrument]        [visualizer]
+`
+
+
 ## Client
 
 The client contains the code which you will modify as part of the course. It constitutes the frontend (UI) portion of this web application.
