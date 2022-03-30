@@ -4,10 +4,18 @@
     Visualizer Type:    unknown
 */
 
-import React from "react";
+// 3rd party library imports
+import P5 from "p5";
+import * as Tone from "tone";
 
-const Hilarioo = () => {
+// project imports
+import { Visualizer } from "../Visualizers";
+
+const HVisualizer = () => {
   return <div>Hilarioo Visualizer</div>;
 };
 
-export default Hilarioo;
+export const HilariooVisualizer = new Visualizer(
+  "@Hilarioo: Visualizer",
+  HVisualizer
+);
