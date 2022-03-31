@@ -10,6 +10,7 @@
 | Jose Gonzalez  | guitar        | [visualizer] |
 | Justin Diones  | [instrument]  | [visualizer] |
 | Rui Qi Huang   | [instrument]  | [visualizer] |
+| Abhijai Singh  | [instrument]  | [visualizer] |
 
 
 ## Client
