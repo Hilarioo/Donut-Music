@@ -9,7 +9,7 @@
 | -------------- | -----------   | ----------   |
 | Jose Gonzalez  | guitar        | [visualizer] |
 | Justin Diones  | [instrument]  | [visualizer] |
-| Rui Qi Huang   | [instrument]  | [visualizer] |
+| Rui Qi Huang   | Flute          | [visualizer] |
 | Abhijai Singh  | [instrument]  | [visualizer] |
 
 
