@@ -173,4 +173,4 @@ function Piano({ synth, setSynth }: InstrumentProps): JSX.Element {
   );
 }
 
-export const AbhiSInstrument = new Instrument("@AbhiS: ", Piano);
+export const AbhiSInstrument = new Instrument("@AbhiS: Piano", Piano);
