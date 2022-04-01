@@ -8,7 +8,7 @@
 | Name           | Instrument    | Visualizer   |
 | -------------- | -----------   | ----------   |
 | Jose Gonzalez  | guitar        | [visualizer] |
-| Justin Diones  | [instrument]  | [visualizer] |
+| Justin Diones  | Drums  | [visualizer] |
 | Rui Qi Huang   | Flute          | [visualizer] |
 | Abhijai Singh  | [instrument]  | [visualizer] |
 
