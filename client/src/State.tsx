@@ -2,7 +2,8 @@
 import { List, Map } from "immutable";
 
 // project dependencies
-import { PianoInstrument } from "./instruments/Piano";
+import { AbhiSInstrument } from "./instruments/AbhiS";
+import { AbhiSVisualizer } from "./visualizers/AbhiS";
 import { WaveformVisualizer } from "./visualizers/Waveform";
 import { HilariooInstrument } from "./instruments/Hilarioo";
 import { HilariooVisualizer } from "./visualizers/Hilarioo";
