@@ -27,7 +27,7 @@ const instruments = List([AbhiSInstrument, HilariooInstrument,RuiQiHuang1832Inst
  * Start with the default waveform visualizer.
  * Add your visualizers to this list.
  */
-const visualizers = List([AbhiSVisualizer, HilariooVisualizer, RuiQiHuang1832Visualizer, JustDioVisualizer]); // similar to Visualizer[]
+const visualizers = List([AbhiSVisualizer, HilariooVisualizer, RuiQiHuang1832Visualizer, JustDioVisualizer, WaveformVisualizer]); // similar to Visualizer[]
 
 /**
  * The default application state contains a list of instruments and a list of visualizers.
