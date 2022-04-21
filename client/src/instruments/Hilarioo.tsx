@@ -31,7 +31,7 @@ const notes = [
 // on click vibrate string(s)
 const vibrateStrings = (e: any) => {
   // [TEST] outputs fret clicked and any after
-  console.log(e.target.value);
+  console.log(e);
 };
 
 /** ------------------------------------------------------------------------ **
@@ -48,7 +48,7 @@ const Guitar = () => {
             .concat(notes)
             .map((v, i) => (
               <div
-                key={`g-${i}` + v.note}
+                key={`g${i}-` + v.note}
                 className='fret'
                 onClick={(e) => {
                   vibrateStrings(e);
@@ -63,7 +63,7 @@ const Guitar = () => {
             .slice(5)
             .concat(notes.slice(0, 7))
             .map((v, i) => (
-              <div key={`d-${i}` + v.note} className='fret'>
+              <div key={`d${i}-` + v.note} className='fret'>
                 <div className='string d-str'></div>
                 <div className='fret-key'>{v.note}</div>
               </div>
@@ -71,7 +71,7 @@ const Guitar = () => {
         </div>
         <div className='row'>
           {notes.concat(notes.slice(0, 2)).map((v, i) => (
-            <div key={`a-${i}` + v.note} className='fret'>
+            <div key={`a${i}-` + v.note} className='fret'>
               <div className='string a-str'></div>
               <span className='fret-key'>{v.note}</span>
             </div>
@@ -82,7 +82,7 @@ const Guitar = () => {
             .slice(-5)
             .concat(notes.slice(0, -3))
             .map((v, i) => (
-              <div key={`e-${i}` + v.note} className='fret'>
+              <div key={`e${i}-` + v.note} className='fret'>
                 <div className='string e-str'></div>
                 <span className='fret-key '>{v.note}</span>
               </div>
