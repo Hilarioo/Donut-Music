@@ -36,40 +36,44 @@ const Guitar = () => {
   return (
     <div className='guitar-container'>
       <div className='guitar'>
-        <div className='string g-str'>
+        <div className='row'>
           {notes
             .slice(-2)
             .concat(notes)
             .map((i) => (
               <div key={i.note} className='fret'>
+                <div className='string g-str'></div>
                 <span className='fret-key'>{i.note}</span>
               </div>
             ))}
         </div>
-        <div className='string d-str'>
+        <div className='row'>
           {notes
             .slice(5)
             .concat(notes.slice(0, 7))
             .map((i) => (
               <div key={i.note} className='fret'>
-                <span className='fret-key'>{i.note}</span>
+                <div className='string d-str'></div>
+                <div className='fret-key'>{i.note}</div>
               </div>
             ))}
         </div>
-        <div className='string a-str'>
+        <div className='row'>
           {notes.concat(notes.slice(0, 2)).map((i) => (
             <div key={i.note} className='fret'>
+              <div className='string a-str'></div>
               <span className='fret-key'>{i.note}</span>
             </div>
           ))}
         </div>
-        <div className='string e-str'>
+        <div className='row'>
           {notes
             .slice(-5)
             .concat(notes.slice(0, -3))
             .map((i) => (
               <div key={i.note} className='fret'>
-                <span className='fret-key'>{i.note}</span>
+                <div className='string e-str'></div>
+                <span className='fret-key '>{i.note}</span>
               </div>
             ))}
         </div>
