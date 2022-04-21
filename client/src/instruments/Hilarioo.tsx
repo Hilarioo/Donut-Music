@@ -28,6 +28,12 @@ const notes = [
   { note: "G#", duration: 0, synth: "" },
 ];
 
+// on click vibrate string(s)
+const vibrateStrings = (e: any) => {
+  // [TEST] outputs fret clicked and any after
+  console.log(e.target.value);
+};
+
 /** ------------------------------------------------------------------------ **
  * Contains implementation of components for Guitar.
  ** ------------------------------------------------------------------------ */
@@ -40,10 +46,15 @@ const Guitar = () => {
           {notes
             .slice(-2)
             .concat(notes)
-            .map((i) => (
-              <div key={i.note} className='fret'>
+            .map((v, i) => (
+              <div
+                key={`g-${i}` + v.note}
+                className='fret'
+                onClick={(e) => {
+                  vibrateStrings(e);
+                }}>
                 <div className='string g-str'></div>
-                <span className='fret-key'>{i.note}</span>
+                <span className='fret-key'>{v.note}</span>
               </div>
             ))}
         </div>
@@ -51,18 +62,18 @@ const Guitar = () => {
           {notes
             .slice(5)
             .concat(notes.slice(0, 7))
-            .map((i) => (
-              <div key={i.note} className='fret'>
+            .map((v, i) => (
+              <div key={`d-${i}` + v.note} className='fret'>
                 <div className='string d-str'></div>
-                <div className='fret-key'>{i.note}</div>
+                <div className='fret-key'>{v.note}</div>
               </div>
             ))}
         </div>
         <div className='row'>
-          {notes.concat(notes.slice(0, 2)).map((i) => (
-            <div key={i.note} className='fret'>
+          {notes.concat(notes.slice(0, 2)).map((v, i) => (
+            <div key={`a-${i}` + v.note} className='fret'>
               <div className='string a-str'></div>
-              <span className='fret-key'>{i.note}</span>
+              <span className='fret-key'>{v.note}</span>
             </div>
           ))}
         </div>
@@ -70,10 +81,10 @@ const Guitar = () => {
           {notes
             .slice(-5)
             .concat(notes.slice(0, -3))
-            .map((i) => (
-              <div key={i.note} className='fret'>
+            .map((v, i) => (
+              <div key={`e-${i}` + v.note} className='fret'>
                 <div className='string e-str'></div>
-                <span className='fret-key '>{i.note}</span>
+                <span className='fret-key '>{v.note}</span>
               </div>
             ))}
         </div>
