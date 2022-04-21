@@ -33,15 +33,15 @@
   content: "";
   position: absolute;
   top: 1.75rem;
-  width: 52rem;
+  width: 100%;
   background: linear-gradient(#eee, #999);
-  background-image: url(../img/guitar-strings.svg);
+  background-image: url(../img/strings.svg);
   background-size: auto 100%;
   background-repeat: repeat;
-  margin-left: -2rem;
   box-shadow: 9rem .3rem .5rem rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
+
 
 .g-str:before {
   height: .4rem;
