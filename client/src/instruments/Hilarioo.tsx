@@ -23,28 +23,28 @@ const Guitar = () => {
       <div className='guitar'>
         <div className='g-string'>
           {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((i) => (
-            <div key={i} className='fret'>
+            <div key={`g${i}`} className='fret'>
               {i}
             </div>
           ))}
         </div>
         <div className='d-string'>
           {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((i) => (
-            <div key={i} className='fret'>
+            <div key={`d${i}`} className='fret'>
               {i}
             </div>
           ))}
         </div>
         <div className='a-string'>
           {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((i) => (
-            <div key={i} className='fret'>
+            <div key={`a${i}`} className='fret'>
               {i}
             </div>
           ))}
         </div>
         <div className='e-string'>
           {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((i) => (
-            <div key={i} className='fret'>
+            <div key={`e${i}`} className='fret'>
               {i}
             </div>
           ))}
