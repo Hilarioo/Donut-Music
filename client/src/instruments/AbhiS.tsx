@@ -8,7 +8,7 @@ import React from 'react';
 import { Instrument, InstrumentProps } from '../Instruments';
 
 /** ------------------------------------------------------------------------ **
- * Contains implementation of components for Piano.
+ * Contains implementation of components for Violin.
  ** ------------------------------------------------------------------------ */
 
 const Violin = () => {
