@@ -1,7 +1,7 @@
 /*
     File:          Hilarioo.jsx
     Details:       Instrument
-    Instrument:    Guitar
+    Instrument:    Bass Guitar
 */
 
 // 3rd party library imports
@@ -18,7 +18,40 @@ import { Instrument, InstrumentProps } from "../Instruments";
  ** ------------------------------------------------------------------------ */
 
 const Guitar = () => {
-  return <div>Hilarioo Instrument</div>;
+  return (
+    <>
+      <div className='guitar'>
+        <div className='g-string'>
+          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((i) => (
+            <div key={i} className='fret'>
+              {i}
+            </div>
+          ))}
+        </div>
+        <div className='d-string'>
+          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((i) => (
+            <div key={i} className='fret'>
+              {i}
+            </div>
+          ))}
+        </div>
+        <div className='a-string'>
+          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((i) => (
+            <div key={i} className='fret'>
+              {i}
+            </div>
+          ))}
+        </div>
+        <div className='e-string'>
+          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((i) => (
+            <div key={i} className='fret'>
+              {i}
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
 };
 
 export const HilariooInstrument = new Instrument("@Hilarioo: Guitar", Guitar);
