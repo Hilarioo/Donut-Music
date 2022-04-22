@@ -6,12 +6,13 @@ import React from 'react';
 
 // project imports
 import { Instrument, InstrumentProps } from '../Instruments';
+import { Filter, Frequency, NoiseSynth, Part, Synth, PolySynth, FrequencyEnvelope} from 'tone';
 
 // setup drum and hi-hat, no envelope needed
 const drum = new Tone.MembraneSynth().toDestination();
 const hihat = new Tone.NoiseSynth().toDestination();
 
-// setup snare soung
+// setup snare sound
 const snare = new Tone.NoiseSynth({
     envelope:{
         decay: 0.5
