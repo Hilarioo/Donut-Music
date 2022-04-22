@@ -16,7 +16,7 @@ const HVisualizer = (p5: P5, analyzer: Tone.Analyser) => {
   const height = window.innerHeight / 2;
   const dim = Math.min(width, height);
 
-  p5.background(0, 0, 255);
+  p5.background(42, 46, 55);
 
   p5.strokeWeight(dim * 0.01);
   if (p5.mouseIsPressed) {

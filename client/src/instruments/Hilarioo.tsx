@@ -40,7 +40,9 @@ const Guitar = () => {
 
   return (
     <div className='guitar-container'>
+      {/* Guitar Fretboard */}
       <div className='guitar'>
+        {/* G String (4th) */}
         <div className='row'>
           {notes
             .slice(-2)
@@ -64,6 +66,7 @@ const Guitar = () => {
               </div>
             ))}
         </div>
+        {/* D String (2th) */}
         <div className='row'>
           {notes
             .slice(5)
@@ -87,6 +90,7 @@ const Guitar = () => {
               </div>
             ))}
         </div>
+        {/* A String (3th) */}
         <div className='row'>
           {notes.concat(notes.slice(0, 2)).map((v, i) => (
             <div
@@ -105,6 +109,7 @@ const Guitar = () => {
             </div>
           ))}
         </div>
+        {/* E String (4th) */}
         <div className='row'>
           {notes
             .slice(-5)
@@ -128,6 +133,11 @@ const Guitar = () => {
               </div>
             ))}
         </div>
+      </div>
+
+      {/* Guitar Feautres */}
+      <div className='guitar-features'>
+        <div className='feature'></div>
       </div>
     </div>
   );

@@ -9,14 +9,14 @@
 /* Guitar Styling */
 .guitar-container {
   overflow-x: scroll;
-  padding-top: 1.5rem;
+  position: relative;
   height: 42vh;
 }
 
 .guitar {
   display: flex;
   flex-direction: column;
-  background: #d6d4d0;
+  background: #f3f3f3;
   min-width: 50rem;
   height: 35vh;
   z-index: 1;
@@ -30,19 +30,24 @@
   position: relative;
 }
 
+
 .string:before {
   cursor: pointer;
   content: "";
   overflow-x: visible;
-  width: 107%;
-  left: 0;
-  margin-top: -.2rem;
-  background: linear-gradient(#eee, #999);
-  box-shadow: 0rem .3rem .5rem rgba(0, 0, 0, 0.02);
+  width: 108%;
+  left: -.1rem;
+  margin-top: -.3rem;
+  background-color: #ba9;
+  background-image: repeating-linear-gradient(50deg, rgba(0, 0, 0, .6), transparent 0.15em, transparent 0.2em),
+    linear-gradient(180deg, rgba(0, 0, 0, .3) 10%, hsla(0, 0%, 100%, .25) 15%, hsla(0, 0%, 100%, .8) 30%, hsla(0, 0%, 100%, .25) 45%, rgba(0, 0, 0, .6) 90%);
+
+  filter: drop-shadow(0rem 0.3rem .09rem rgba(0, 0, 0, 0.3));
   z-index: 3;
   position: absolute;
 }
 
+/* Guitar string vibration animation */
 .vshake-animation[toggle-animation="1"]:before {
   animation: v-shake-01 0.25s ease 0s 4 none,
     v-shake-01 0.35s ease 600ms 3 none,
@@ -83,11 +88,11 @@
 }
 
 .a-str:before {
-  height: .8rem;
+  height: .7rem;
 }
 
 .e-str:before {
-  height: .9rem;
+  height: .8rem;
 }
 
 .fret {
@@ -97,22 +102,27 @@
   flex: 1;
   width: 3.5rem;
   border-right: .2rem solid;
-  border-image: linear-gradient(to left, #777, #bbb, rgb(0, 0, 0)) 1 100%;
+  border-image: linear-gradient(to left, rgb(60, 60, 60), #bbb, rgb(0, 0, 0)) 1 100%;
   justify-content: center;
   align-items: center;
 }
 
 .fret:first-child {
-  background-color: #af1d1d;
+  background-color: rgb(174, 138, 104);
   min-width: 8rem;
   flex-grow: 0;
   flex-shrink: 0;
-  border-image: linear-gradient(to left, #bbb, #fff, #bbb) 1 100%;
+  border-image: linear-gradient(to left, rgb(87, 62, 38), rgb(87, 62, 38), rgb(165, 134, 104)) 1 100%;
+
 }
 
 .fret:hover {
   cursor: pointer;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(108, 108, 108, 0.2);
+}
+
+.fret:first-child:hover {
+  background: rgba(174, 138, 104, 0.85);
 }
 
 .fret-key {
@@ -128,6 +138,8 @@
   font-size: .75rem;
   font-weight: bold;
   text-transform: uppercase;
+  /* Hide fret key */
+  display: none;
 }
 
 
@@ -161,6 +173,10 @@ body,
 :root {
   --sec: rgba(255, 204, 0, 1);
   --pri: rgba(35, 17, 97, 1);
+}
+
+.disable-select {
+  user-select: none;
 }
 
 .bg-trans {
