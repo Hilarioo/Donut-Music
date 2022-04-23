@@ -15,7 +15,7 @@ const hihat = new Tone.NoiseSynth().toDestination();
 // setup snare sound
 const snare = new Tone.NoiseSynth({
     envelope:{
-        decay: 0.5
+        decay: 0.35
     }
 }).toDestination();
 
@@ -31,6 +31,19 @@ const cymbal = new Tone.MetalSynth({
     resonance: 4000,
     octaves: 1.5,
 }).toDestination();
+
+// setup cowbell sound
+const cowbell = new Tone.MetalSynth({
+    envelope:{
+        attack: 0.001,
+        decay: 0.4,
+        release: 0.1
+    },
+    harmonicity: 12,
+    modulationIndex: 20,
+    resonance: 800
+}).toDestination();
+
 
 const Drums = () => {
 
@@ -95,6 +108,21 @@ const Drums = () => {
             background-color: #4c4878;
             color: white;
         }
+
+        .buttonCow{
+            height: 100px;
+            width: 100px;
+            background-color: lightskyblue;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-left: 10px;
+            border: 5px solid midnightblue;
+            margin-top:10px;
+        }
+        .buttonCow:hover{
+            background-color: cornflowerblue;
+            color: white;
+        }
     `
 
     return (<><div className='title'><h1>JustDio Drum Machine</h1></div>
@@ -122,7 +150,7 @@ const Drums = () => {
     </button>
     </div>
 
-    <div style={{paddingLeft:60}}>
+    <div>
     <button className="buttonHat" onClick={() => hihat.triggerAttackRelease("8n")}>
         <b>Hi-Hat</b>
     </button>
@@ -131,6 +159,9 @@ const Drums = () => {
     </button>
     <button className='buttonSnare' onClick={() => snare.triggerAttackRelease("8n")}>
         <b>Snare</b>
+    </button>
+    <button className='buttonCow' onClick={() => cowbell.triggerAttackRelease("A1", 1)}>
+        <b>Cowbell</b>
     </button>
     </div>
       </>);
