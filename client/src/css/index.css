@@ -1,11 +1,7 @@
-/* Tailwind CSS needed for @Hilarioo styling 
+/* @Hilarioo styling 
 /* Instrument: ../instruments/Hilario.tsx (Bass Guitar)
 /* Visualizer: ../visualizers/Hilario.tsx ()
 */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Guitar Styling */
 .guitar-container {
   overflow-x: scroll;

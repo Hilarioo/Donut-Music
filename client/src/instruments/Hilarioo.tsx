@@ -9,6 +9,7 @@ import * as Tone from "tone";
 import classNames from "classnames";
 import { List, Range } from "immutable";
 import React, { useEffect, useState } from "react";
+import Button from "@mui/material/Button";
 
 // project imports
 import { Instrument, InstrumentProps } from "../Instruments";
@@ -137,7 +138,9 @@ const Guitar = () => {
 
       {/* Guitar Feautres */}
       <div className='guitar-features'>
-        <div className='feature'></div>
+        <div className='mark'></div>
+        <div className='highlight'></div>
+        <div className='reset'></div>
       </div>
     </div>
   );
