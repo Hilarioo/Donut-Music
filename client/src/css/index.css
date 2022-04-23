@@ -22,7 +22,7 @@
   margin: 1rem;
   left: 1rem;
   z-index: 10;
-  width: 20rem;
+  width: 17rem;
 }
 
 .guitar {
@@ -172,6 +172,36 @@
   100% {
     transform: translateY(0)
   }
+}
+
+
+/* 
+/* =============
+/*  MUI @Override
+/* =============
+*/
+.guitar-btn {
+  background-color: rgb(255, 255, 255) !important;
+  color: #000 !important;
+  border-color: rgb(0, 0, 0) !important;
+  box-shadow: -.1rem .3rem .1rem rgba(0, 0, 0, .3) !important;
+  font-weight: bold !important;
+  font-size: .75rem !important;
+}
+
+.guitar-btn:hover {
+  background-color: rgb(42, 46, 55) !important;
+  box-shadow: none !important;
+  color: #fff !important;
+  border-color: rgb(0, 0, 0) !important;
+}
+
+.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked {
+  color: rgb(42, 46, 55) !important;
+}
+
+.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track {
+  background-color: rgb(42, 46, 55) !important;
 }
 
 

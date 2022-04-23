@@ -8,24 +8,18 @@
 import * as Tone from "tone";
 import classNames from "classnames";
 import { List, Range } from "immutable";
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useState } from "react";
 // Marterial UI
 import Button from "@mui/material/Button";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
-import Grow from "@mui/material/Grow";
-import Paper from "@mui/material/Paper";
-import Popper from "@mui/material/Popper";
-import MenuItem from "@mui/material/MenuItem";
-import MenuList from "@mui/material/MenuList";
-// impoort components
-import Features from "./components/HilariooFeatures";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
 // project imports
 import { Instrument, InstrumentProps } from "../Instruments";
-
 /** ------------------------------------------------------------------------ **
  * Contains implementation of components for Guitar.
  ** ------------------------------------------------------------------------ */
-const resetGuitar = [
+const resetGuitarOff = [
   {
     str: "G",
     cords: [
@@ -103,6 +97,84 @@ const resetGuitar = [
     ],
   },
 ];
+const resetGuitarOn = [
+  {
+    str: "G",
+    cords: [
+      { index: "00", note: "G", showNote: true },
+      { index: "01", note: "G#", showNote: true },
+      { index: "02", note: "A", showNote: true },
+      { index: "03", note: "A#", showNote: true },
+      { index: "04", note: "B", showNote: true },
+      { index: "05", note: "C", showNote: true },
+      { index: "06", note: "C#", showNote: true },
+      { index: "07", note: "D", showNote: true },
+      { index: "08", note: "D#", showNote: true },
+      { index: "09", note: "E", showNote: true },
+      { index: "10", note: "F", showNote: true },
+      { index: "11", note: "F#", showNote: true },
+      { index: "12", note: "G", showNote: true },
+      { index: "13", note: "G#", showNote: true },
+    ],
+  },
+  {
+    str: "D",
+    cords: [
+      { index: "00", note: "D", showNote: true },
+      { index: "01", note: "D#", showNote: true },
+      { index: "02", note: "E", showNote: true },
+      { index: "03", note: "F", showNote: true },
+      { index: "04", note: "F#", showNote: true },
+      { index: "05", note: "G", showNote: true },
+      { index: "06", note: "G#", showNote: true },
+      { index: "07", note: "A", showNote: true },
+      { index: "08", note: "A#", showNote: true },
+      { index: "09", note: "B", showNote: true },
+      { index: "10", note: "C", showNote: true },
+      { index: "11", note: "C#", showNote: true },
+      { index: "12", note: "D", showNote: true },
+      { index: "13", note: "D#", showNote: true },
+    ],
+  },
+  {
+    str: "A",
+    cords: [
+      { index: "00", note: "A", showNote: true },
+      { index: "01", note: "A#", showNote: true },
+      { index: "02", note: "B", showNote: true },
+      { index: "03", note: "C", showNote: true },
+      { index: "04", note: "C#", showNote: true },
+      { index: "05", note: "D", showNote: true },
+      { index: "06", note: "D#", showNote: true },
+      { index: "07", note: "E", showNote: true },
+      { index: "08", note: "F", showNote: true },
+      { index: "09", note: "F#", showNote: true },
+      { index: "10", note: "G", showNote: true },
+      { index: "11", note: "G#", showNote: true },
+      { index: "12", note: "A", showNote: true },
+      { index: "13", note: "A#", showNote: true },
+    ],
+  },
+  {
+    str: "E",
+    cords: [
+      { index: "00", note: "E", showNote: true },
+      { index: "01", note: "F", showNote: true },
+      { index: "02", note: "F#", showNote: true },
+      { index: "03", note: "G", showNote: true },
+      { index: "04", note: "G#", showNote: true },
+      { index: "05", note: "A", showNote: true },
+      { index: "06", note: "A#", showNote: true },
+      { index: "07", note: "B", showNote: true },
+      { index: "08", note: "C", showNote: true },
+      { index: "09", note: "C#", showNote: true },
+      { index: "10", note: "D", showNote: true },
+      { index: "11", note: "D#", showNote: true },
+      { index: "12", note: "E", showNote: true },
+      { index: "13", note: "F", showNote: true },
+    ],
+  },
+];
 export interface Cord {
   index: string;
   note: string;
@@ -114,6 +186,7 @@ export interface Note {
 }
 
 const Guitar = () => {
+  const [showNotes, setShowNotes] = useState(true);
   // guitar cords
   const [guitarCords, setGuitarCords] = useState<Array<Note>>([
     {
@@ -193,46 +266,22 @@ const Guitar = () => {
       ],
     },
   ]);
+
+  // show all
+  const showAll = () => {
+    setShowNotes(!showNotes);
+
+    setGuitarCords(showNotes ? resetGuitarOn : resetGuitarOff);
+
+    console.log("show: " + showNotes);
+    console.log(guitarCords);
+  };
+
   // string animation
   const [cord01, setCord01] = useState(0);
   const [cord02, setCord02] = useState(0);
   const [cord03, setCord03] = useState(0);
   const [cord04, setCord04] = useState(0);
-
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = useRef<HTMLButtonElement>(null);
-
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
-
-  const handleClose = (e: any) => {
-    if (
-      anchorRef.current &&
-      anchorRef.current.contains(e.target as HTMLElement)
-    ) {
-      return;
-    }
-
-    setOpen(false);
-  };
-
-  function handleListKeyDown(event: React.KeyboardEvent) {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setOpen(false);
-    }
-  }
-
-  // return focus to the button when we transitioned from !open -> open
-  const prevOpen = useRef(open);
-  useEffect(() => {
-    if (prevOpen.current === true && open === false) {
-      anchorRef.current!.focus();
-    }
-
-    prevOpen.current = open;
-  }, [open]);
 
   const updateKeys = (e: any) => {
     // obtain the key needing update (clicked)
@@ -272,64 +321,19 @@ const Guitar = () => {
 
   return (
     <div className='guitar-container'>
-      {/* Guitar Features */}
       {/* Guitar Feautres */}
       <div className='guitar-features'>
-        <Button variant='outlined' color='primary' className='mark'>
-          Mark
-        </Button>
-        <div className='highlight'>
-          <Button
-            ref={anchorRef}
-            aria-controls={open ? "menu-list-grow" : undefined}
-            aria-haspopup='true'
-            variant='outlined'
-            onClick={handleToggle}>
-            Highlight
-          </Button>
-          <Popper
-            open={open}
-            anchorEl={anchorRef.current}
-            role={undefined}
-            transition
-            disablePortal>
-            {({ TransitionProps, placement }) => (
-              <Grow
-                {...TransitionProps}
-                style={{
-                  transformOrigin:
-                    placement === "bottom" ? "center top" : "center bottom",
-                }}>
-                <Paper>
-                  <ClickAwayListener onClickAway={handleClose}>
-                    <MenuList
-                      autoFocusItem={open}
-                      id='menu-list-grow'
-                      onKeyDown={handleListKeyDown}>
-                      {guitarCords[1].cords.map(
-                        (n: {
-                          note:
-                            | boolean
-                            | React.ReactChild
-                            | React.ReactFragment
-                            | React.ReactPortal
-                            | null
-                            | undefined;
-                        }) => (
-                          <MenuItem onClick={handleClose}>{n.note}</MenuItem>
-                        )
-                      )}
-                    </MenuList>
-                  </ClickAwayListener>
-                </Paper>
-              </Grow>
-            )}
-          </Popper>
-        </div>
+        <FormGroup>
+          <FormControlLabel
+            control={<Switch />}
+            label='Show All Notes'
+            onClick={() => showAll()}
+          />
+        </FormGroup>
         <Button
           variant='outlined'
-          className='reset'
-          onClick={() => setGuitarCords(resetGuitar)}>
+          className='reset guitar-btn'
+          onClick={() => setGuitarCords(resetGuitarOff)}>
           Reset
         </Button>
       </div>
