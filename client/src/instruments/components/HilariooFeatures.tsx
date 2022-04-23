@@ -7,7 +7,6 @@ import Paper from "@mui/material/Paper";
 import Popper from "@mui/material/Popper";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
-
 export interface Cord {
   note: string;
   showNote: boolean;
@@ -16,12 +15,19 @@ export interface Note {
   str: string;
   cords: Cord[];
 }
-const HilariooFeatures = (guitarCords: Note[], setGuitarCords: any) => {
+const HilariooFeatures = (guitarCords: Array<Note>, resetNotes: void) => {
   // reset content
   // const resetNotes = () => {
-  //   const newNotes = notes.map((note) => ({ ...note, showNote: false }));
-  //   setNotes(newNotes);
-  //   console.log(notes);
+  //   let update: Array<Note> = [];
+  //   for (let i = 0; i < guitarCords.length; i++) {
+  //     update.push({
+  //       str: guitarCords[i].str || "test",
+  //       cords: [...guitarCords[i].cords] || [],
+  //     });
+  //   }
+  //   console.log("Update: " + update);
+  //   setGuitarCords(update);
+  //   console.log("New Guitar Cords: " + JSON.stringify(guitarCords[0]));
   // };
   // MUI
   const [open, setOpen] = React.useState(false);
@@ -94,9 +100,19 @@ const HilariooFeatures = (guitarCords: Note[], setGuitarCords: any) => {
                       autoFocusItem={open}
                       id='menu-list-grow'
                       onKeyDown={handleListKeyDown}>
-                      {guitarCords[1].cords.map((n) => (
-                        <MenuItem onClick={handleClose}>{n.note}</MenuItem>
-                      ))}
+                      {guitarCords[1].cords.map(
+                        (n: {
+                          note:
+                            | boolean
+                            | React.ReactChild
+                            | React.ReactFragment
+                            | React.ReactPortal
+                            | null
+                            | undefined;
+                        }) => (
+                          <MenuItem onClick={handleClose}>{n.note}</MenuItem>
+                        )
+                      )}
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>
@@ -104,7 +120,7 @@ const HilariooFeatures = (guitarCords: Note[], setGuitarCords: any) => {
             )}
           </Popper>
         </div>
-        <Button variant='outlined' className='reset'>
+        <Button variant='outlined' className='reset' onClick={() => resetNotes}>
           Reset
         </Button>
       </div>
