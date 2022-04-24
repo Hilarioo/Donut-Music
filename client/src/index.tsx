@@ -1,18 +1,17 @@
 // 3rd party library imports
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
 // project imports
-import App from './App';
+import App from "./App";
 
 // CSS
-import './index.css';
-import './tachyons.css';
-
+import "./css/index.css";
+import "./css/tachyons.css";
 
 /** ------------------------------------------------------------------------ **
  * Client entry point
- * 
+ *
  *                              i1 i2 i3 i4      v1 v2 v3 v4
  *                               |  |  |  |       |  |  |  |
  *             index.tsx        Instruments.tsx  Visualizers.tsx
@@ -24,19 +23,19 @@ import './tachyons.css';
  *            MainPage.tsx
  *                |
  *                v
- *            SideNav.tsx 
+ *            SideNav.tsx
  ** ------------------------------------------------------------------------ */
 
 function onReactLoaded() {
-  console.log('React has loaded.');
+  console.log("React has loaded.");
 }
 
-const rootEl = document.getElementById('root');
+const rootEl = document.getElementById("root");
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  rootEl,  // Insert into DOM here
-  onReactLoaded,
+  rootEl, // Insert into DOM here
+  onReactLoaded
 );
