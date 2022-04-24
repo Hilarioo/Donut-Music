@@ -75,12 +75,12 @@
 }
 
 .fret:first-child:hover {
-  background: rgba(174, 138, 104, 0.85);
+  background: rgba(174, 138, 104, 0.8);
 }
 
 .fret-key {
   position: absolute;
-  background: teal;
+  background: rgba(0, 128, 128, 0.9);
   color: #fff;
   height: 2rem;
   width: 2rem;
@@ -91,6 +91,10 @@
   font-size: .75rem;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.fret-key:hover {
+  background: rgba(0, 128, 128, 1);
 }
 
 /* hide content */
