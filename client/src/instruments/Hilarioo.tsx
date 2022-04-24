@@ -19,6 +19,7 @@ import { Instrument, InstrumentProps } from "../Instruments";
 /** ------------------------------------------------------------------------ **
  * Contains implementation of components for Guitar.
  ** ------------------------------------------------------------------------ */
+// resets
 const resetGuitarOff = [
   {
     str: "G",
@@ -175,6 +176,8 @@ const resetGuitarOn = [
     ],
   },
 ];
+
+// interface
 export interface Cord {
   index: string;
   note: string;
@@ -185,8 +188,10 @@ export interface Note {
   cords: Cord[];
 }
 
+// component
 const Guitar = () => {
-  const [showNotes, setShowNotes] = useState(true);
+  // toggle for "show all notes"
+  const [showNotes, setShowNotes] = useState(false);
   // guitar cords
   const [guitarCords, setGuitarCords] = useState<Array<Note>>([
     {
@@ -266,25 +271,15 @@ const Guitar = () => {
       ],
     },
   ]);
-
-  // show all
-  const showAll = () => {
-    setShowNotes(!showNotes);
-
-    setGuitarCords(showNotes ? resetGuitarOn : resetGuitarOff);
-
-    console.log("show: " + showNotes);
-    console.log(guitarCords);
-  };
-
   // string animation
-  const [cord01, setCord01] = useState(0);
-  const [cord02, setCord02] = useState(0);
-  const [cord03, setCord03] = useState(0);
-  const [cord04, setCord04] = useState(0);
+  const [vibrateAnimation01, setVibrateAnimation01] = useState(0);
+  const [vibrateAnimation02, setVibrateAnimation02] = useState(0);
+  const [vibrateAnimation03, setVibrateAnimation03] = useState(0);
+  const [vibrateAnimation04, setVibrateAnimation04] = useState(0);
 
-  const updateKeys = (e: any) => {
-    // obtain the key needing update (clicked)
+  // switch note visibility when clicked
+  const handleNoteClick = (e: any) => {
+    // obtain the key needing update
     const cord = e.target.id.charAt(1).toUpperCase();
     const key = e.target.id.slice(2, 4);
 
@@ -295,45 +290,65 @@ const Guitar = () => {
     const newGuitar = guitarCords.map((g) =>
       g.str === cord ? { ...g, cords: newCords } : g
     );
+
+    // update state
     setGuitarCords(newGuitar);
+    // reset show all notes toggle
+    setShowNotes(false);
   };
 
   const handleCord01 = (e: any) => {
-    setCord01(1);
-    updateKeys(e);
+    setVibrateAnimation01(1);
+    handleNoteClick(e);
     e.preventDefault();
   };
   const handleCord02 = (e: any) => {
-    setCord02(1);
-    updateKeys(e);
+    setVibrateAnimation02(1);
+    handleNoteClick(e);
     e.preventDefault();
   };
   const handleCord03 = (e: any) => {
-    setCord03(1);
-    updateKeys(e);
+    setVibrateAnimation03(1);
+    handleNoteClick(e);
     e.preventDefault();
   };
   const handleCord04 = (e: any) => {
-    setCord04(1);
-    updateKeys(e);
+    setVibrateAnimation04(1);
+    handleNoteClick(e);
     e.preventDefault();
+  };
+
+  // Show all notes
+  const showAll = (e: any) => {
+    setShowNotes((showNotes) => !showNotes);
+    setGuitarCords(!showNotes ? resetGuitarOn : resetGuitarOff);
+  };
+
+  // reset to not show any nodes and reset's toggle button
+  const resetNotes = (e: any) => {
+    setGuitarCords(resetGuitarOff);
+    setShowNotes(false);
+    console.log("toggle04: " + showNotes);
   };
 
   return (
     <div className='guitar-container'>
       {/* Guitar Feautres */}
       <div className='guitar-features'>
+        {/* show all notes toggle */}
         <FormGroup>
           <FormControlLabel
             control={<Switch />}
             label='Show All Notes'
-            onClick={() => showAll()}
+            onClick={(e) => showAll(e)}
+            checked={showNotes}
           />
         </FormGroup>
+        {/* reset button to clear fretboard */}
         <Button
           variant='outlined'
           className='reset guitar-btn'
-          onClick={() => setGuitarCords(resetGuitarOff)}>
+          onClick={(e) => resetNotes(e)}>
           Reset
         </Button>
       </div>
@@ -348,10 +363,12 @@ const Guitar = () => {
               id={`0g${v.index}-${v.note}`}
               className='fret'
               onClick={(e) => handleCord01(e)}
-              onAnimationEnd={() => setCord01(0)}>
+              onAnimationEnd={() => setVibrateAnimation01(0)}>
               <div
-                toggle-animation={cord01}
-                className={`string g-str ${!cord01 ? "" : "vshake-animation"}`}
+                toggle-animation={vibrateAnimation01}
+                className={`string g-str ${
+                  !vibrateAnimation01 ? "" : "vshake-animation"
+                }`}
                 id={`0g${v.index}-${v.note}`}></div>
               <span
                 className={`fret-key ${v.showNote ? null : "hide-content"}`}
@@ -361,6 +378,7 @@ const Guitar = () => {
             </div>
           ))}
         </div>
+
         {/* D String (2nd) */}
         <div className='row'>
           {guitarCords[1].cords.map((v, i) => (
@@ -369,10 +387,12 @@ const Guitar = () => {
               id={`1d${v.index}-${v.note}`}
               className='fret'
               onClick={(e) => handleCord02(e)}
-              onAnimationEnd={() => setCord02(0)}>
+              onAnimationEnd={() => setVibrateAnimation02(0)}>
               <div
-                toggle-animation={cord02}
-                className={`string d-str ${!cord02 ? "" : "vshake-animation"}`}
+                toggle-animation={vibrateAnimation02}
+                className={`string d-str ${
+                  !vibrateAnimation02 ? "" : "vshake-animation"
+                }`}
                 id={`1d${v.index}-${v.note}`}></div>
               <span
                 className={`fret-key ${v.showNote ? null : "hide-content"}`}
@@ -382,6 +402,7 @@ const Guitar = () => {
             </div>
           ))}
         </div>
+
         {/* A String (3rd) */}
         <div className='row'>
           {guitarCords[2].cords.map((v, i) => (
@@ -390,10 +411,12 @@ const Guitar = () => {
               id={`2a${v.index}-${v.note}`}
               className='fret'
               onClick={(e) => handleCord03(e)}
-              onAnimationEnd={() => setCord03(0)}>
+              onAnimationEnd={() => setVibrateAnimation03(0)}>
               <div
-                toggle-animation={cord03}
-                className={`string a-str ${!cord03 ? "" : "vshake-animation"}`}
+                toggle-animation={vibrateAnimation03}
+                className={`string a-str ${
+                  !vibrateAnimation03 ? "" : "vshake-animation"
+                }`}
                 id={`2a${v.index}-${v.note}`}></div>
               <span
                 className={`fret-key ${v.showNote ? null : "hide-content"}`}
@@ -403,6 +426,7 @@ const Guitar = () => {
             </div>
           ))}
         </div>
+
         {/* E String (4th) */}
         <div className='row'>
           {guitarCords[3].cords.map((v, i) => (
@@ -411,10 +435,12 @@ const Guitar = () => {
               id={`3e${v.index}-${v.note}`}
               className='fret'
               onClick={(e) => handleCord04(e)}
-              onAnimationEnd={() => setCord04(0)}>
+              onAnimationEnd={() => setVibrateAnimation04(0)}>
               <div
-                toggle-animation={cord04}
-                className={`string e-str ${!cord04 ? "" : "vshake-animation"}`}
+                toggle-animation={vibrateAnimation04}
+                className={`string e-str ${
+                  !vibrateAnimation04 ? "" : "vshake-animation"
+                }`}
                 id={`3e${v.index}-${v.note}`}></div>
               <span
                 className={`fret-key ${v.showNote ? null : "hide-content"}`}
