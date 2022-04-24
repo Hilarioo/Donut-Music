@@ -21,13 +21,25 @@ export type AppState = Map<string, any>; // similar to { [id: string]: any }
  * Start with the default piano instrument.
  * Add your instruments to this list.
  */
-const instruments = List([AbhiSInstrument, HilariooInstrument,RuiQiHuang1832Instrument, JustDioInstrument]); // similar to Instrument[]
+const instruments = List([
+  AbhiSInstrument,
+  HilariooInstrument,
+  RuiQiHuang1832Instrument,
+  JustDioInstrument,
+]); // similar to Instrument[]
 
 /**
  * Start with the default waveform visualizer.
  * Add your visualizers to this list.
  */
-const visualizers = List([AbhiSVisualizer, HilariooVisualizer, RuiQiHuang1832Visualizer, JustDioVisualizer, WaveformVisualizer]); // similar to Visualizer[]
+
+const visualizers = List([
+  AbhiSVisualizer,
+  HilariooVisualizer,
+  RuiQiHuang1832Visualizer,
+  JustDioVisualizer,
+  WaveformVisualizer,
+]); // similar to Visualizer[]
 
 /**
  * The default application state contains a list of instruments and a list of visualizers.
@@ -38,5 +50,4 @@ const visualizers = List([AbhiSVisualizer, HilariooVisualizer, RuiQiHuang1832Vis
 export const defaultState: AppState = Map<string, any>({
   instruments: instruments,
   visualizers: visualizers,
-  
 });
