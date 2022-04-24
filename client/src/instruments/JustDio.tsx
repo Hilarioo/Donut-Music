@@ -1,12 +1,13 @@
 // 3rd party library imports
-import * as Tone from 'tone';
-import classNames from 'classnames';
-import { List, Range } from 'immutable';
-import React from 'react';
+import * as Tone from "tone";
+import classNames from "classnames";
+import { List, Range } from "immutable";
+import React from "react";
 
 // project imports
 import { Instrument, InstrumentProps } from '../Instruments';
 import { Filter, Frequency, NoiseSynth, Part, Synth, PolySynth, FrequencyEnvelope} from 'tone';
+
 
 // setup drum and hi-hat, no envelope needed
 const drum = new Tone.MembraneSynth().toDestination();
@@ -46,6 +47,11 @@ const cowbell = new Tone.MetalSynth({
 
 
 const Drums = () => {
+  return (
+    <>
+      <div>
+        <h1>JustDio Drum Machine</h1>
+      </div>
 
     //CSS styling for kick buttons, hi-hat, cymbal, and snare
     const css = `
@@ -169,3 +175,4 @@ const Drums = () => {
 
   
 export const JustDioInstrument = new Instrument("@JustDio: Drums", Drums);
+
