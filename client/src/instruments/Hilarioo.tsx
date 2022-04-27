@@ -12,6 +12,22 @@ import React, { useState } from "react";
 
 // Tone Instruments
 import A2Noise from "../audio/guitar/A2.mp3";
+import A3Noise from "../audio/guitar/A3.mp3";
+import A4Noise from "../audio/guitar/A4.mp3";
+import A5Noise from "../audio/guitar/A5.mp3";
+import Cs2Noise from "../audio/guitar/Cs2.mp3";
+import C3Noise from "../audio/guitar/C3.mp3";
+import C4Noise from "../audio/guitar/C4.mp3";
+import C5Noise from "../audio/guitar/C5.mp3";
+import C6Noise from "../audio/guitar/C6.mp3";
+import Ds3Noise from "../audio/guitar/Ds3.mp3";
+import Ds4Noise from "../audio/guitar/Ds4.mp3";
+import Ds5Noise from "../audio/guitar/Ds5.mp3";
+import E2Noise from "../audio/guitar/E2.mp3";
+import Fs2Noise from "../audio/guitar/Fs2.mp3";
+import Fs3Noise from "../audio/guitar/Fs3.mp3";
+import Fs4Noise from "../audio/guitar/Fs4.mp3";
+import Fs5Noise from "../audio/guitar/Fs5.mp3";
 
 // Components
 import HilariooFeatures from "./components/HilariooFeatures";
@@ -33,7 +49,30 @@ interface Note {
   cords: Cord[];
 }
 
-const player = new Tone.Player(A2Noise).toDestination();
+const guitarSamples = new Tone.ToneAudioBuffers(
+  {
+    A2: A2Noise,
+    A3: A3Noise,
+    A4: A4Noise,
+    A5: A5Noise,
+    C3: C3Noise,
+    C4: C4Noise,
+    C5: C5Noise,
+    C6: C6Noise,
+    Cs2: Cs2Noise,
+    Ds3: Ds3Noise,
+    Ds4: Ds4Noise,
+    Ds5: Ds5Noise,
+    E2: E2Noise,
+    Fs2: Fs2Noise,
+    Fs3: Fs3Noise,
+    Fs4: Fs4Noise,
+    Fs5: Fs5Noise,
+  },
+  () => {
+    console.log("audio loaded");
+  }
+);
 
 // React.FC: react functional component
 const Guitar: React.FC = () => {
@@ -127,10 +166,10 @@ const Guitar: React.FC = () => {
 
   // switch note visibility when clicked
   const handleNoteClick = (cord: string, key: string, index: number) => {
-    Tone.loaded().then(() => {
-      player.start();
-    });
-
+    const player = new Tone.Player().toDestination();
+    // play one of the samples when they all load
+    player.buffer = guitarSamples.get("C3");
+    player.start();
     // update cords
     const updateCords = guitarCords[index].cords.map((c) =>
       c.index === key ? { ...c, showNote: !c.showNote } : c
