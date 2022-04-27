@@ -35,6 +35,7 @@ interface Note {
 
 const player = new Tone.Player(A2Noise).toDestination();
 
+// React.FC: react functional component
 const Guitar: React.FC = () => {
   // guitar cords
   const [guitarCords, setGuitarCords] = useState<Array<Note>>([
