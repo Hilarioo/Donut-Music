@@ -33,6 +33,8 @@ interface Note {
   cords: Cord[];
 }
 
+const player = new Tone.Player(A2Noise).toDestination();
+
 const Guitar: React.FC = () => {
   // guitar cords
   const [guitarCords, setGuitarCords] = useState<Array<Note>>([
@@ -124,6 +126,10 @@ const Guitar: React.FC = () => {
 
   // switch note visibility when clicked
   const handleNoteClick = (cord: string, key: string, index: number) => {
+    Tone.loaded().then(() => {
+      player.start();
+    });
+
     // update cords
     const updateCords = guitarCords[index].cords.map((c) =>
       c.index === key ? { ...c, showNote: !c.showNote } : c
@@ -163,11 +169,6 @@ const Guitar: React.FC = () => {
         return 0;
     }
   };
-
-  // Tone.loaded().then(() => {
-  //   player.start();
-  // });
-  // const player = new Tone.Player(A2Noise).toDestination();
 
   return (
     <div className='guitar-container'>
