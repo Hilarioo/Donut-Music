@@ -12,8 +12,9 @@ import Switch from "@mui/material/Switch";
 
 // interface
 interface Cord {
-  index: string;
+  index: number;
   note: string;
+  sample: string;
   showNote: boolean;
 }
 interface Note {
@@ -49,6 +50,7 @@ const HilariooFeatures: React.FC<Props> = ({
       cords: c.cords.map((n) => ({
         index: n.index,
         note: n.note,
+        sample: n.sample,
         showNote: reset,
       })),
     }));

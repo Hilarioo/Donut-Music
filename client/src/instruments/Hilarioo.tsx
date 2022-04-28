@@ -11,23 +11,41 @@ import { List, Range, update } from "immutable";
 import React, { useState } from "react";
 
 // Tone Instruments
-import A2Noise from "../audio/guitar/A2.mp3";
-import A3Noise from "../audio/guitar/A3.mp3";
-import A4Noise from "../audio/guitar/A4.mp3";
-import A5Noise from "../audio/guitar/A5.mp3";
-import Cs2Noise from "../audio/guitar/Cs2.mp3";
-import C3Noise from "../audio/guitar/C3.mp3";
-import C4Noise from "../audio/guitar/C4.mp3";
-import C5Noise from "../audio/guitar/C5.mp3";
-import C6Noise from "../audio/guitar/C6.mp3";
-import Ds3Noise from "../audio/guitar/Ds3.mp3";
-import Ds4Noise from "../audio/guitar/Ds4.mp3";
-import Ds5Noise from "../audio/guitar/Ds5.mp3";
-import E2Noise from "../audio/guitar/E2.mp3";
-import Fs2Noise from "../audio/guitar/Fs2.mp3";
-import Fs3Noise from "../audio/guitar/Fs3.mp3";
-import Fs4Noise from "../audio/guitar/Fs4.mp3";
-import Fs5Noise from "../audio/guitar/Fs5.mp3";
+import A1 from "../audio/guitar/A1.mp3";
+import As1 from "../audio/guitar/As1.mp3";
+import A2 from "../audio/guitar/A2.mp3";
+import As2 from "../audio/guitar/As2.mp3";
+
+import B1 from "../audio/guitar/B1.mp3";
+import B2 from "../audio/guitar/B2.mp3";
+
+import C2 from "../audio/guitar/C2.mp3";
+import Cs2 from "../audio/guitar/Cs2.mp3";
+import C3 from "../audio/guitar/C3.mp3";
+import Cs3 from "../audio/guitar/Cs3.mp3";
+
+import D2 from "../audio/guitar/D2.mp3";
+import Ds2 from "../audio/guitar/Ds2.mp3";
+import D3 from "../audio/guitar/D3.mp3";
+import Ds3 from "../audio/guitar/Ds3.mp3";
+
+import E1 from "../audio/guitar/E1.mp3";
+import E2 from "../audio/guitar/E2.mp3";
+import E3 from "../audio/guitar/E3.mp3";
+
+import F1 from "../audio/guitar/F1.mp3";
+import Fs1 from "../audio/guitar/Fs1.mp3";
+import F2 from "../audio/guitar/F2.mp3";
+import Fs2 from "../audio/guitar/Fs2.mp3";
+import F3 from "../audio/guitar/F3.mp3";
+import Fs3 from "../audio/guitar/Fs3.mp3";
+
+import G1 from "../audio/guitar/G1.mp3";
+import Gs1 from "../audio/guitar/Gs1.mp3";
+import G2 from "../audio/guitar/G2.mp3";
+import Gs2 from "../audio/guitar/Gs2.mp3";
+import G3 from "../audio/guitar/G3.mp3";
+import Gs3 from "../audio/guitar/Gs3.mp3";
 
 // Components
 import HilariooFeatures from "./components/HilariooFeatures";
@@ -40,8 +58,9 @@ import { Instrument, InstrumentProps } from "../Instruments";
 
 // interface
 interface Cord {
-  index: string;
+  index: number;
   note: string;
+  sample: string;
   showNote: boolean;
 }
 interface Note {
@@ -51,23 +70,35 @@ interface Note {
 
 const guitarSamples = new Tone.ToneAudioBuffers(
   {
-    A2: A2Noise,
-    A3: A3Noise,
-    A4: A4Noise,
-    A5: A5Noise,
-    C3: C3Noise,
-    C4: C4Noise,
-    C5: C5Noise,
-    C6: C6Noise,
-    Cs2: Cs2Noise,
-    Ds3: Ds3Noise,
-    Ds4: Ds4Noise,
-    Ds5: Ds5Noise,
-    E2: E2Noise,
-    Fs2: Fs2Noise,
-    Fs3: Fs3Noise,
-    Fs4: Fs4Noise,
-    Fs5: Fs5Noise,
+    A1: A1,
+    "A1#": As1,
+    A2: A2,
+    "A2#": As2,
+    B1: B1,
+    B2: B2,
+    C2: C2,
+    "C2#": Cs2,
+    C3: A2,
+    "C3#": Cs3,
+    D2: D2,
+    "D2#": Ds2,
+    D3: D3,
+    "D3#": Ds3,
+    E1: E1,
+    E2: E2,
+    E3: E3,
+    F1: F1,
+    "F1#": Fs1,
+    F2: F2,
+    "F2#": Fs2,
+    F3: F3,
+    "F3#": Fs3,
+    G1: G1,
+    "G1#": Gs1,
+    G2: G2,
+    "G2#": Gs2,
+    G3: G3,
+    "G3#": Gs3,
   },
   () => {
     console.log("audio loaded");
@@ -81,77 +112,77 @@ const Guitar: React.FC = () => {
     {
       str: "G",
       cords: [
-        { index: "00", note: "G", showNote: false },
-        { index: "01", note: "G#", showNote: false },
-        { index: "02", note: "A", showNote: false },
-        { index: "03", note: "A#", showNote: false },
-        { index: "04", note: "B", showNote: false },
-        { index: "05", note: "C", showNote: false },
-        { index: "06", note: "C#", showNote: false },
-        { index: "07", note: "D", showNote: false },
-        { index: "08", note: "D#", showNote: false },
-        { index: "09", note: "E", showNote: false },
-        { index: "10", note: "F", showNote: false },
-        { index: "11", note: "F#", showNote: false },
-        { index: "12", note: "G", showNote: false },
-        { index: "13", note: "G#", showNote: false },
+        { index: 0, note: "G", sample: "G2", showNote: false },
+        { index: 1, note: "G#", sample: "G2#", showNote: false },
+        { index: 2, note: "A", sample: "A2", showNote: false },
+        { index: 3, note: "A#", sample: "A2#", showNote: false },
+        { index: 4, note: "B", sample: "B2", showNote: false },
+        { index: 5, note: "C", sample: "C3", showNote: false },
+        { index: 6, note: "C#", sample: "C3#", showNote: false },
+        { index: 7, note: "D", sample: "D3", showNote: false },
+        { index: 8, note: "D#", sample: "D3#", showNote: false },
+        { index: 9, note: "E", sample: "E3", showNote: false },
+        { index: 10, note: "F", sample: "F3", showNote: false },
+        { index: 11, note: "F#", sample: "F3#", showNote: false },
+        { index: 12, note: "G", sample: "G3", showNote: false },
+        { index: 13, note: "G#", sample: "G3#", showNote: false },
       ],
     },
     {
       str: "D",
       cords: [
-        { index: "00", note: "D", showNote: false },
-        { index: "01", note: "D#", showNote: false },
-        { index: "02", note: "E", showNote: false },
-        { index: "03", note: "F", showNote: false },
-        { index: "04", note: "F#", showNote: false },
-        { index: "05", note: "G", showNote: false },
-        { index: "06", note: "G#", showNote: false },
-        { index: "07", note: "A", showNote: false },
-        { index: "08", note: "A#", showNote: false },
-        { index: "09", note: "B", showNote: false },
-        { index: "10", note: "C", showNote: false },
-        { index: "11", note: "C#", showNote: false },
-        { index: "12", note: "D", showNote: false },
-        { index: "13", note: "D#", showNote: false },
+        { index: 0, note: "D", sample: "D2", showNote: false },
+        { index: 1, note: "D#", sample: "D2#", showNote: false },
+        { index: 2, note: "E", sample: "E2", showNote: false },
+        { index: 3, note: "F", sample: "F2", showNote: false },
+        { index: 4, note: "F#", sample: "F2#", showNote: false },
+        { index: 5, note: "G", sample: "G2", showNote: false },
+        { index: 6, note: "G#", sample: "G2#", showNote: false },
+        { index: 7, note: "A", sample: "A2", showNote: false },
+        { index: 8, note: "A#", sample: "A2#", showNote: false },
+        { index: 9, note: "B", sample: "B2", showNote: false },
+        { index: 10, note: "C", sample: "C3", showNote: false },
+        { index: 11, note: "C#", sample: "C3#", showNote: false },
+        { index: 12, note: "D", sample: "D3", showNote: false },
+        { index: 13, note: "D#", sample: "D3#", showNote: false },
       ],
     },
     {
       str: "A",
       cords: [
-        { index: "00", note: "A", showNote: false },
-        { index: "01", note: "A#", showNote: false },
-        { index: "02", note: "B", showNote: false },
-        { index: "03", note: "C", showNote: false },
-        { index: "04", note: "C#", showNote: false },
-        { index: "05", note: "D", showNote: false },
-        { index: "06", note: "D#", showNote: false },
-        { index: "07", note: "E", showNote: false },
-        { index: "08", note: "F", showNote: false },
-        { index: "09", note: "F#", showNote: false },
-        { index: "10", note: "G", showNote: false },
-        { index: "11", note: "G#", showNote: false },
-        { index: "12", note: "A", showNote: false },
-        { index: "13", note: "A#", showNote: false },
+        { index: 0, note: "A", sample: "A1", showNote: false },
+        { index: 1, note: "A#", sample: "A1#", showNote: false },
+        { index: 2, note: "B", sample: "B1", showNote: false },
+        { index: 3, note: "C", sample: "C2", showNote: false },
+        { index: 4, note: "C#", sample: "C2#", showNote: false },
+        { index: 5, note: "D", sample: "D2", showNote: false },
+        { index: 6, note: "D#", sample: "D2#", showNote: false },
+        { index: 7, note: "E", sample: "E2", showNote: false },
+        { index: 8, note: "F", sample: "F2", showNote: false },
+        { index: 9, note: "F#", sample: "F2#", showNote: false },
+        { index: 10, note: "G", sample: "G2", showNote: false },
+        { index: 11, note: "G#", sample: "G2#", showNote: false },
+        { index: 12, note: "A", sample: "A2", showNote: false },
+        { index: 13, note: "A#", sample: "A2#", showNote: false },
       ],
     },
     {
       str: "E",
       cords: [
-        { index: "00", note: "E", showNote: false },
-        { index: "01", note: "F", showNote: false },
-        { index: "02", note: "F#", showNote: false },
-        { index: "03", note: "G", showNote: false },
-        { index: "04", note: "G#", showNote: false },
-        { index: "05", note: "A", showNote: false },
-        { index: "06", note: "A#", showNote: false },
-        { index: "07", note: "B", showNote: false },
-        { index: "08", note: "C", showNote: false },
-        { index: "09", note: "C#", showNote: false },
-        { index: "10", note: "D", showNote: false },
-        { index: "11", note: "D#", showNote: false },
-        { index: "12", note: "E", showNote: false },
-        { index: "13", note: "F", showNote: false },
+        { index: 0, note: "E", sample: "E1", showNote: false },
+        { index: 1, note: "F", sample: "F1", showNote: false },
+        { index: 2, note: "F#", sample: "F1#", showNote: false },
+        { index: 3, note: "G", sample: "G1", showNote: false },
+        { index: 4, note: "G#", sample: "G1#", showNote: false },
+        { index: 5, note: "A", sample: "A1", showNote: false },
+        { index: 6, note: "A#", sample: "A1#", showNote: false },
+        { index: 7, note: "B", sample: "B1", showNote: false },
+        { index: 8, note: "C", sample: "C2", showNote: false },
+        { index: 9, note: "C#", sample: "C2#", showNote: false },
+        { index: 10, note: "D", sample: "D2", showNote: false },
+        { index: 11, note: "D#", sample: "D2#", showNote: false },
+        { index: 12, note: "E", sample: "E2", showNote: false },
+        { index: 13, note: "F", sample: "F2", showNote: false },
       ],
     },
   ]);
@@ -164,15 +195,15 @@ const Guitar: React.FC = () => {
   const [animateA, setAnimateA] = useState(0);
   const [animateE, setAnimateE] = useState(0);
 
-  // switch note visibility when clicked
-  const handleNoteClick = (cord: string, key: string, index: number) => {
+  // switch note visibility when clicked && play audio
+  const handleNoteClick = (cord: string, sample: string, index: number) => {
     const player = new Tone.Player().toDestination();
-    // play one of the samples when they all load
-    player.buffer = guitarSamples.get("C3");
+    // play  sample once all-load (onload)
+    player.buffer = guitarSamples.get(sample);
     player.start();
     // update cords
     const updateCords = guitarCords[index].cords.map((c) =>
-      c.index === key ? { ...c, showNote: !c.showNote } : c
+      c.sample === sample ? { ...c, showNote: !c.showNote } : c
     );
     const updateGuitar = guitarCords.map((g) =>
       g.str === cord.toUpperCase() ? { ...g, cords: updateCords } : g
@@ -184,27 +215,28 @@ const Guitar: React.FC = () => {
   };
 
   const handleCordAnimation = (e: any) => {
-    const cordStr = e.target.id.charAt(1);
-    const key = e.target.id.slice(2, 4);
-    switch (cordStr) {
-      case "g":
+    const cord = e.target.id.charAt(0).toUpperCase();
+    const sample = e.target.id.slice(2);
+
+    switch (cord) {
+      case "G":
         setAnimateG(1);
-        handleNoteClick(cordStr, key, 0);
+        handleNoteClick(cord, sample, 0);
         e.preventDefault();
         return 0;
-      case "d":
+      case "D":
         setAnimateD(1);
-        handleNoteClick(cordStr, key, 1);
+        handleNoteClick(cord, sample, 1);
         e.preventDefault();
         return 0;
-      case "a":
+      case "A":
         setAnimateA(1);
-        handleNoteClick(cordStr, key, 2);
+        handleNoteClick(cord, sample, 2);
         e.preventDefault();
         return 0;
-      default: // e
+      default: // E
         setAnimateE(1);
-        handleNoteClick(cordStr, key, 3);
+        handleNoteClick(cord, sample, 3);
         e.preventDefault();
         return 0;
     }
@@ -226,8 +258,8 @@ const Guitar: React.FC = () => {
         <div className='row'>
           {guitarCords[0].cords.map((v) => (
             <div
-              key={`g${v.index}-${v.note}`}
-              id={`0g${v.index}-${v.note}`}
+              key={v.index}
+              id={`G-${v.sample}`}
               className='fret'
               onClick={(e) => handleCordAnimation(e)}
               onAnimationEnd={() => setAnimateG(0)}>
@@ -236,10 +268,10 @@ const Guitar: React.FC = () => {
                 className={`string g-str ${
                   !animateG ? "" : "vshake-animation"
                 }`}
-                id={`0g${v.index}-${v.note}`}></div>
+                id={`G-${v.sample}`}></div>
               <span
                 className={`fret-key ${v.showNote ? null : "hide-content"}`}
-                id={`0g${v.index}-${v.note}`}>
+                id={`G-${v.sample}`}>
                 {v.note}
               </span>
             </div>
@@ -250,8 +282,8 @@ const Guitar: React.FC = () => {
         <div className='row'>
           {guitarCords[1].cords.map((v, i) => (
             <div
-              key={`1d${v.index}-${v.note}`}
-              id={`1d${v.index}-${v.note}`}
+              key={v.index}
+              id={`D-${v.sample}`}
               className='fret'
               onClick={(e) => handleCordAnimation(e)}
               onAnimationEnd={() => setAnimateD(0)}>
@@ -260,10 +292,10 @@ const Guitar: React.FC = () => {
                 className={`string d-str ${
                   !animateD ? "" : "vshake-animation"
                 }`}
-                id={`1d${v.index}-${v.note}`}></div>
+                id={`D-${v.sample}`}></div>
               <span
                 className={`fret-key ${v.showNote ? null : "hide-content"}`}
-                id={`1d${v.index}-${v.note}`}>
+                id={`D-${v.sample}`}>
                 {v.note}
               </span>
             </div>
@@ -274,8 +306,8 @@ const Guitar: React.FC = () => {
         <div className='row'>
           {guitarCords[2].cords.map((v, i) => (
             <div
-              key={`2a${v.index}-${v.note}`}
-              id={`2a${v.index}-${v.note}`}
+              key={v.index}
+              id={`A-${v.sample}`}
               className='fret'
               onClick={(e) => handleCordAnimation(e)}
               onAnimationEnd={() => setAnimateA(0)}>
@@ -284,10 +316,10 @@ const Guitar: React.FC = () => {
                 className={`string a-str ${
                   !animateA ? "" : "vshake-animation"
                 }`}
-                id={`2a${v.index}-${v.note}`}></div>
+                id={`A-${v.sample}`}></div>
               <span
                 className={`fret-key ${v.showNote ? null : "hide-content"}`}
-                id={`2a${v.index}-${v.note}`}>
+                id={`A-${v.sample}`}>
                 {v.note}
               </span>
             </div>
@@ -298,8 +330,8 @@ const Guitar: React.FC = () => {
         <div className='row'>
           {guitarCords[3].cords.map((v, i) => (
             <div
-              key={`3e${v.index}-${v.note}`}
-              id={`3e${v.index}-${v.note}`}
+              key={v.index}
+              id={`E-${v.sample}`}
               className='fret'
               onClick={(e) => handleCordAnimation(e)}
               onAnimationEnd={() => setAnimateE(0)}>
@@ -308,10 +340,10 @@ const Guitar: React.FC = () => {
                 className={`string e-str ${
                   !animateE ? "" : "vshake-animation"
                 }`}
-                id={`3e${v.index}-${v.note}`}></div>
+                id={`E-${v.sample}`}></div>
               <span
                 className={`fret-key ${v.showNote ? null : "hide-content"}`}
-                id={`3e${v.index}-${v.note}`}>
+                id={`E-${v.sample}`}>
                 {v.note}
               </span>
             </div>
