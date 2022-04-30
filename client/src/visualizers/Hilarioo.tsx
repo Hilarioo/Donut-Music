@@ -14,17 +14,15 @@ import { Visualizer } from "../Visualizers";
 const HVisualizer = (p5: P5, analyzer: Tone.Analyser) => {
   const width = window.innerWidth;
   const height = window.innerHeight / 2;
-  const dim = Math.min(width, height);
-
   p5.background(42, 46, 55);
 
-  p5.strokeWeight(dim * 0.01);
-  if (p5.mouseIsPressed) {
-    p5.fill(0);
-  } else {
-    p5.fill(255);
+  const values = analyzer.getValue();
+  p5.fill(0, 128, 128);
+  for (let i = 0; i < values.length; i++) {
+    const amp = values[i] as number;
+    const d = p5.map(amp, 0, 0.3, 100, 1);
+    p5.ellipse(width / 2, height / 2, d, d);
   }
-  p5.ellipse(p5.mouseX, p5.mouseY, 80, 80);
 };
 
 export const HilariooVisualizer = new Visualizer(

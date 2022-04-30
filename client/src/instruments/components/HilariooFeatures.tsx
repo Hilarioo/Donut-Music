@@ -59,7 +59,7 @@ const HilariooFeatures: React.FC<Props> = ({
     setGuitarCords(update);
   };
 
-  // reset to not show any nodes and reset's toggle button
+  // reset to not show any nodes and reset toggle button
   const resetNotes = (e: any) => {
     handleReset(false);
     setShowToggle(false);
