@@ -12,7 +12,7 @@ import * as Tone from "tone";
 // project imports
 import { Visualizer } from "../Visualizers";
 
-let duration = 0;
+let rotation = 0;
 
 const rotateBox = (
   p5: P5,
@@ -22,13 +22,13 @@ const rotateBox = (
   time: number
 ) => {
   p5.normalMaterial();
-  p5.rotateX(duration);
-  p5.rotateY(duration);
-  p5.rotateZ(duration / 2);
+  p5.rotateX(-rotation);
+  p5.rotateY(rotation);
+  p5.rotateZ(120);
   // box([width], [Height], [depth], [detailX], [detailY])
   p5.box(width, height, depth);
-  if (time !== 0) duration += 0.0001;
-  // console.log("duration: " + duration);
+  if (time !== 0) rotation += 0.0001;
+  else rotation = 0;
 };
 
 const HVisualizer = (p5: P5, analyzer: Tone.Analyser) => {
