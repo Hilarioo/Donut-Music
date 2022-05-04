@@ -208,7 +208,12 @@
   background-color: rgb(42, 46, 55) !important;
 }
 
-
+.css-19mk8g1-MuiInputBase-root-MuiFilledInput-root {
+  width: 100vw !important;
+  height: 3.5rem !important;
+  margin-bottom: 1rem;
+  font-size: .90rem !important;
+}
 
 /* Styling for all other elements */
 body {
