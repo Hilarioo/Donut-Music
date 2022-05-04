@@ -13,6 +13,7 @@ export const WaveformVisualizer = new Visualizer(
     const dim = Math.min(width, height);
 
     p5.background(0, 0, 0, 255);
+
     p5.strokeWeight(dim * 0.01);
     p5.stroke(255, 255, 255, 255);
     p5.noFill();
