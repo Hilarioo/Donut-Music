@@ -30,25 +30,29 @@ export const RuiQiHuang1832Visualizer = new Visualizer(
   
     p5.translate(width/2.5, height/2)
     p5.beginShape();
+   
+
     for (let i = 0 ; i < 360; i++) {
       let radius = p5.map(arr[i], 0, 0.6, height/2 - 100, 0);
-      let x = radius * p5.sin(i) ;
+      let x = radius * p5.sin(i);
       let y = radius * p5.cos(i);
-  
+    
     p5.vertex(x , y );
    
-  }
+
+}
+  for (let t = -3; t <= p5.PI; t +=1){
+    p5.beginShape();
 
     for (let i = 0 ; i < 350; i++) {
         const amplitude = values[i] as number;
         let radius = p5.map(arr[i] + amplitude + 2, 0, 0.6, height/2 - 110, 0);
-        let x = radius * p5.sin(i + 3) ;
+        let x = radius * p5.sin(i + 3) *t;
         let y = radius * p5.cos(i + 2);
-      
       p5.vertex(x , y );
      
     }
     p5.endShape();
-  
+  }
   },
 );
