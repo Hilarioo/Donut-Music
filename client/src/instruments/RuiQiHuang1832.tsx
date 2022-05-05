@@ -1,27 +1,88 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-empty-pattern */
 // 3rd party library imports
 import * as Tone from "tone";
 import classNames from "classnames";
 import { List, Range } from "immutable";
 import React from "react";
+// @ts-ignore
+import FluteMp3 from 'tonejs-instrument-flute-mp3';
+
+import A4 from "../fluteaudio/A4.mp3"
+import A6 from "../fluteaudio/A6.mp3"
+import A5 from "../fluteaudio/A5.mp3"
+import E4 from "../fluteaudio/E4.mp3"
+import C4 from "../fluteaudio/C4.mp3"
+import C5 from "../fluteaudio/C5.mp3"
+import C6 from "../fluteaudio/C6.mp3"
+
 
 // project imports
 import { Instrument, InstrumentProps } from "../Instruments";
+const flute = new FluteMp3();
+flute.toMaster();
+const flutenotes = new Tone.ToneAudioBuffers(
+  {
+    A4: A4,
+    A6: A6,
+    A5: A5,
+    E4: E4,
+    C4: C4,
+    C5: C5,
+    C6: C6
+  })
 
-const flute = new Tone.PolySynth(Tone.Synth).toDestination();
+  interface FlutePropKeys {
+    note: string;
+    duration?: string;
+    synth?: Tone.Synth; 
+    index: number; 
+  }
 
-const Flute = () => {
+const instrument = new Tone.Synth({
+  oscillator: {
+    type: 'sine',
+  },
+  envelope: {
+    attack: 0.01,
+    decay: 0,
+    sustain: 1,
+    release: 1
+  }
+})
+
+
+ const Flute = () => {
+  const player = new Tone.Player().toDestination();
+
     return (<>
     <div>
       <div style={rawflute}>
         <span style={dotend}></span>
-    <span style={dot} onClick={() => flute.triggerAttackRelease('C1', 2)}></span>
-    <span style={dot} onClick={() => flute.triggerAttackRelease('C4', 2)}></span>
-    <span style={dot} onClick={() => flute.triggerAttackRelease('C3', 1)}></span>
-    <span style={dot} onClick={() => flute.triggerAttackRelease('C2', 3)}></span>
-    <span style={dot} onClick={() => flute.triggerAttackRelease('C6', 1)}></span>
-    <span style={dot}></span>
-    <span style={dot}></span>
-    <span style={mouthpiece}></span>
+    <span 
+    style={dot} 
+    onClick={() => {flute.triggerAttackRelease("A6",1)}}>
+    </span>
+    <span 
+    style={dot} 
+    onClick={() => {flute.triggerAttackRelease("A4",1 )}}></span>
+    <span 
+    style={dot} 
+    onClick={() => {flute.triggerAttackRelease("A5",1)}}></span>
+    <span 
+    style={dot} 
+    onClick={() => {flute.triggerAttackRelease("E4",1)}}></span>
+    <span 
+    style={dot} 
+    onClick={() => {flute.triggerAttackRelease("C4",1)}}></span>
+    <span 
+    style={dot} 
+    onClick={() => {flute.triggerAttackRelease("C5",1)}}></span>
+    <span 
+    style={dot} 
+    onClick={() => {flute.triggerAttackRelease("C6",1)}}></span>
+    <span 
+    style={mouthpiece}></span>
     </div>
     <span style={leaf}></span>
       </div>
