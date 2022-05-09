@@ -153,7 +153,7 @@
     v-shake-01 0.4s ease 750ms 2 none,
     v-shake-01 0.3s ease 800ms 1 none;
   animation-fill-mode: forwards;
-  animation-play-state: running;
+  animation-play-state: revert;
 }
 
 @keyframes v-shake-01 {
@@ -208,7 +208,12 @@
   background-color: rgb(42, 46, 55) !important;
 }
 
-
+.css-19mk8g1-MuiInputBase-root-MuiFilledInput-root {
+  width: 100vw !important;
+  height: 3.5rem !important;
+  margin-bottom: 1rem;
+  font-size: .90rem !important;
+}
 
 /* Styling for all other elements */
 body {

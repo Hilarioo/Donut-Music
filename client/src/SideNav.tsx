@@ -2,6 +2,8 @@
 import classNames from "classnames";
 import { List } from "immutable";
 import React from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 import { useLocation, Link } from "react-router-dom";
 import {
   RadioButton20,
@@ -157,6 +159,15 @@ function SongsNav({ state, dispatch }: SideNavProps): JSX.Element {
   const songs: List<any> = state.get("songs", List());
   return (
     <Section title='Playlist'>
+      {/* search bar */}
+      <Box
+        component='form'
+        className='search-songs'
+        noValidate
+        autoComplete='off'>
+        <TextField id='filled-basic' label='search by name' variant='filled' />
+      </Box>
+
       {songs.map((song) => (
         <div
           key={song.get("id")}
