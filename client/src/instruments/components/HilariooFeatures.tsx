@@ -1,126 +1,88 @@
-import React, { useState, useEffect, useRef } from "react";
+/*
+    File:          HilariooFeatures.jsx
+    Details:       Toggle & Reset Feature for the Bass Guitar
+*/
+
+import React from "react";
 // Marterial UI
 import Button from "@mui/material/Button";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
-import Grow from "@mui/material/Grow";
-import Paper from "@mui/material/Paper";
-import Popper from "@mui/material/Popper";
-import MenuItem from "@mui/material/MenuItem";
-import MenuList from "@mui/material/MenuList";
-export interface Cord {
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
+
+// interface
+interface Cord {
+  index: number;
   note: string;
+  sample: string;
   showNote: boolean;
 }
-export interface Note {
+interface Note {
   str: string;
   cords: Cord[];
 }
-const HilariooFeatures = (guitarCords: Array<Note>, resetNotes: void) => {
-  // reset content
-  // const resetNotes = () => {
-  //   let update: Array<Note> = [];
-  //   for (let i = 0; i < guitarCords.length; i++) {
-  //     update.push({
-  //       str: guitarCords[i].str || "test",
-  //       cords: [...guitarCords[i].cords] || [],
-  //     });
-  //   }
-  //   console.log("Update: " + update);
-  //   setGuitarCords(update);
-  //   console.log("New Guitar Cords: " + JSON.stringify(guitarCords[0]));
-  // };
-  // MUI
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = useRef<HTMLButtonElement>(null);
 
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
+type Props = {
+  showToggle: boolean;
+  setShowToggle: (val: boolean) => void;
+  guitarCords: Note[];
+  setGuitarCords: (val: Note[]) => void;
+};
+
+const HilariooFeatures: React.FC<Props> = ({
+  showToggle,
+  setShowToggle,
+  guitarCords,
+  setGuitarCords,
+}) => {
+  // Show all notes
+  const showAll = () => {
+    // update toggle state
+    setShowToggle(!showToggle);
+    // update guitar state
+    handleReset(!showToggle);
   };
 
-  const handleClose = (e: any) => {
-    if (
-      anchorRef.current &&
-      anchorRef.current.contains(e.target as HTMLElement)
-    ) {
-      return;
-    }
+  // reset showNote: false || true
+  const handleReset = (reset: boolean) => {
+    const update = guitarCords.map((c: Note) => ({
+      str: c.str,
+      cords: c.cords.map((n) => ({
+        index: n.index,
+        note: n.note,
+        sample: n.sample,
+        showNote: reset,
+      })),
+    }));
 
-    setOpen(false);
+    // update guitar state
+    setGuitarCords(update);
   };
 
-  function handleListKeyDown(event: React.KeyboardEvent) {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setOpen(false);
-    }
-  }
-
-  // return focus to the button when we transitioned from !open -> open
-  const prevOpen = useRef(open);
-  useEffect(() => {
-    if (prevOpen.current === true && open === false) {
-      anchorRef.current!.focus();
-    }
-
-    prevOpen.current = open;
-  }, [open]);
-
+  // reset to not show any nodes and reset toggle button
+  const resetNotes = (e: any) => {
+    handleReset(false);
+    setShowToggle(false);
+    e.preventDefault();
+  };
   return (
     <>
       {/* Guitar Feautres */}
       <div className='guitar-features'>
-        <Button variant='outlined' color='primary' className='mark'>
-          Mark
-        </Button>
-        <div className='highlight'>
-          <Button
-            ref={anchorRef}
-            aria-controls={open ? "menu-list-grow" : undefined}
-            aria-haspopup='true'
-            variant='outlined'
-            onClick={handleToggle}>
-            Highlight
-          </Button>
-          <Popper
-            open={open}
-            anchorEl={anchorRef.current}
-            role={undefined}
-            transition
-            disablePortal>
-            {({ TransitionProps, placement }) => (
-              <Grow
-                {...TransitionProps}
-                style={{
-                  transformOrigin:
-                    placement === "bottom" ? "center top" : "center bottom",
-                }}>
-                <Paper>
-                  <ClickAwayListener onClickAway={handleClose}>
-                    <MenuList
-                      autoFocusItem={open}
-                      id='menu-list-grow'
-                      onKeyDown={handleListKeyDown}>
-                      {guitarCords[1].cords.map(
-                        (n: {
-                          note:
-                            | boolean
-                            | React.ReactChild
-                            | React.ReactFragment
-                            | React.ReactPortal
-                            | null
-                            | undefined;
-                        }) => (
-                          <MenuItem onClick={handleClose}>{n.note}</MenuItem>
-                        )
-                      )}
-                    </MenuList>
-                  </ClickAwayListener>
-                </Paper>
-              </Grow>
-            )}
-          </Popper>
-        </div>
-        <Button variant='outlined' className='reset' onClick={() => resetNotes}>
+        {/* show all notes toggle */}
+        <FormGroup>
+          <FormControlLabel
+            control={<Switch />}
+            label='Show All Notes'
+            onClick={() => showAll()}
+            checked={showToggle}
+          />
+        </FormGroup>
+        {/* reset button to clear fretboard */}
+        <Button
+          variant='outlined'
+          className='reset guitar-btn'
+          onClick={(e) => resetNotes(e)}>
           Reset
         </Button>
       </div>
