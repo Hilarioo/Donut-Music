@@ -2,7 +2,7 @@
 import * as Tone from "tone";
 import Sketch from "react-p5";
 import P5 from "p5";
-import React, { useEffect, useMemo, useCallback } from "react";
+import { useEffect, useMemo, useCallback } from "react";
 
 type VisualizerDrawer = (
   p5: P5,
@@ -52,9 +52,13 @@ export function VisualizerContainer({ visualizer }: VisualizerContainerProps) {
   }, [waveform, fft]);
 
   const setup = (p5: P5, canvasParentRef: Element) => {
+    console.log("Updated Visualizer: " + name);
     const width = window.innerWidth;
     const height = window.innerHeight / 2;
-    p5.createCanvas(width, height, p5.WEBGL).parent(canvasParentRef);
+    // add webGL for @hilarioo visualizer only
+    name === "@Hilarioo: Visualizer"
+      ? p5.createCanvas(width, height, p5.WEBGL).parent(canvasParentRef)
+      : p5.createCanvas(width, height).parent(canvasParentRef);
   };
 
   return (

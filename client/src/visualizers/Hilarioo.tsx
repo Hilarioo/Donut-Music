@@ -53,7 +53,6 @@ const HVisualizer = (p5: P5, waveform: Tone.Analyser, fft: Tone.Analyser) => {
 
     // rotating based on hertz but slowed down (number in radians)
     rotationFft = amp !== 0 ? rotationFft + htz / 10000000 : 0;
-    console.log(rotationFft);
   }
   p5.pop();
 };
