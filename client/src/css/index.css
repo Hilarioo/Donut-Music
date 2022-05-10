@@ -215,6 +215,16 @@
   font-size: .90rem !important;
 }
 
+/* 
+/* =============
+/*  SideNav
+/* =============
+*/
+.sidenav-logo {
+  width: 13%;
+  margin: 0 1rem 0 .5rem;
+}
+
 /* Styling for all other elements */
 body {
   margin: 0;
