@@ -188,13 +188,6 @@ function SongsNav({ state, dispatch }: SideNavProps): JSX.Element {
       {songs.map((song) =>
         song.get("songTitle").slice(0, search.length).toLowerCase() ===
         search.toLowerCase() ? (
-          // <div
-          //   key={song.get("id")}
-
-          //>
-          //
-          //   {song.get("songTitle")}
-          //   </div>
           <div
             key={song.get("id")}
             className='songs pointer underline flex items-center no-underline i dim'
