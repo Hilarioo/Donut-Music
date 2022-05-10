@@ -225,6 +225,20 @@
   margin: 0 1rem 0 .5rem;
 }
 
+.height {
+  overflow-y: scroll;
+  max-height: 25rem;
+}
+
+.song-title {
+  font-size: .9rem !important;
+}
+
+.song-meta {
+  margin-top: -.75rem !important;
+  font-size: .75rem !important;
+}
+
 /* Styling for all other elements */
 body {
   margin: 0;

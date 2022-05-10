@@ -18,6 +18,13 @@ import { AppState } from "./State";
 import { Instrument } from "./Instruments";
 import { Visualizer } from "./Visualizers";
 
+// Material UI
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 /** ------------------------------------------------------------------------ **
  * SideNav component
  ** ------------------------------------------------------------------------ */
@@ -181,14 +188,39 @@ function SongsNav({ state, dispatch }: SideNavProps): JSX.Element {
       {songs.map((song) =>
         song.get("songTitle").slice(0, search.length).toLowerCase() ===
         search.toLowerCase() ? (
+          // <div
+          //   key={song.get("id")}
+
+          //>
+          //
+          //   {song.get("songTitle")}
+          //   </div>
           <div
             key={song.get("id")}
-            className='f6 pointer underline flex items-center no-underline i dim'
+            className='songs pointer underline flex items-center no-underline i dim'
             onClick={() =>
               dispatch(new DispatchAction("PLAY_SONG", { id: song.get("id") }))
             }>
-            <Music20 className='mr1' />
-            {song.get("songTitle")}
+            <Accordion>
+              <AccordionSummary>
+                <Typography className='song-title'>
+                  <Music20 className='mr1' />
+                  {song.get("songTitle")}
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography className='song-meta'>
+                  <span style={{ fontWeight: "bold" }}>Publisher:</span>{" "}
+                  {song.get("author")}
+                  <br />
+                  <span style={{ fontWeight: "bold" }}>Artist:</span>{" "}
+                  {song.get("artist")}
+                  <br />
+                  <span style={{ fontWeight: "bold" }}>Notes:</span>{" "}
+                  {song.get("notes")}
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
           </div>
         ) : (
           <></>
@@ -241,7 +273,7 @@ function RadioButton({
 
 const Section: React.FC<{ title: string }> = ({ title, children }) => {
   return (
-    <div className='flex flex-column h-55 bb b--light-gray pa3'>
+    <div className='flex flex-column height bb b--light-gray pa3'>
       <div className='fw7 mb2'>{title} </div>
       <div className='flex-auto overflow-scroll'>{children}</div>
     </div>
