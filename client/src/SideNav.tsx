@@ -1,7 +1,7 @@
 // 3rd party library imports
 import classNames from "classnames";
 import { List } from "immutable";
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { useLocation, Link } from "react-router-dom";
@@ -158,6 +158,10 @@ function SongsNav({ state, dispatch }: SideNavProps): JSX.Element {
    */
 
   const songs: List<any> = state.get("songs", List());
+
+  // filter db
+  const [search, setSearch] = useState("");
+
   return (
     <Section title='Playlist'>
       {/* search bar */}
@@ -166,20 +170,30 @@ function SongsNav({ state, dispatch }: SideNavProps): JSX.Element {
         className='search-songs'
         noValidate
         autoComplete='off'>
-        <TextField id='filled-basic' label='search by name' variant='filled' />
+        <TextField
+          id='filled-basic'
+          label='search by name'
+          variant='filled'
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </Box>
 
-      {songs.map((song) => (
-        <div
-          key={song.get("id")}
-          className='f6 pointer underline flex items-center no-underline i dim'
-          onClick={() =>
-            dispatch(new DispatchAction("PLAY_SONG", { id: song.get("id") }))
-          }>
-          <Music20 className='mr1' />
-          {song.get("songTitle")}
-        </div>
-      ))}
+      {songs.map((song) =>
+        song.get("songTitle").slice(0, search.length).toLowerCase() ===
+        search.toLowerCase() ? (
+          <div
+            key={song.get("id")}
+            className='f6 pointer underline flex items-center no-underline i dim'
+            onClick={() =>
+              dispatch(new DispatchAction("PLAY_SONG", { id: song.get("id") }))
+            }>
+            <Music20 className='mr1' />
+            {song.get("songTitle")}
+          </div>
+        ) : (
+          <></>
+        )
+      )}
     </Section>
   );
 }
