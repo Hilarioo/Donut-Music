@@ -226,7 +226,7 @@ function RadioButton({
 
 const Section: React.FC<{ title: string }> = ({ title, children }) => {
   return (
-    <div className='flex flex-column h-25 bb b--light-gray pa3'>
+    <div className='flex flex-column h-55 bb b--light-gray pa3'>
       <div className='fw7 mb2'>{title} </div>
       <div className='flex-auto overflow-scroll'>{children}</div>
     </div>
