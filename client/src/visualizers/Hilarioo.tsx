@@ -2,8 +2,8 @@
     File:               Hilarioo.jsx
     Details:            Music Visualizer
     Visualizer Type:    Two webGL "visualizers"
-                          3DCircle: x&y reacts to the keys amplitude (z fixed)
-                          3DSquare: x&y reacts to the keys hertz, but its 
+                          3DCircle: x&y reacts to the key's amplitude (z fixed)
+                          3DSquare: x reacts to the key's hertz (z&y fixed)
 */
 
 // 3rd party library imports
@@ -65,10 +65,7 @@ const HVisualizer = (p5: P5, waveform: Tone.Analyser, fft: Tone.Analyser) => {
     //box(width, height and depth)
     p5.box(htz, htz, 10);
 
-    // rotating based on hertz converted to fit radian constraints (-Pi to Pi)
-
     rotationFft = amp !== 0 ? htz : 0;
-    console.log("hertz: " + rotationFft);
   }
   p5.pop();
 };
