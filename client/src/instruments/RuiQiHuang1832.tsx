@@ -87,6 +87,7 @@ const Flute = () => {
             onClick={() => {
               flute.triggerAttackRelease("C6", 1);
             }}></span>
+            {/**if too big remove mouthpeice */}
           <span style={mouthpiece}></span>
         </div>
         <span style={leaf}></span>
@@ -146,7 +147,7 @@ const mouthpiece = {
   width: "40px",
   backgroundColor: "#22240f",
   borderRadius: "50%",
-  marginLeft: "25rem",
+  marginLeft: "3rem",
   display: "inline-block",
   borderLeft: "10px solid silver",
   borderTop: "2px solid silver",
