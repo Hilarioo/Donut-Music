@@ -50,7 +50,7 @@ const HVisualizer = (p5: P5, waveform: Tone.Analyser, fft: Tone.Analyser) => {
   // -----------------
   // 3DSquare Rotation
   // -----------------
-  p5.translate(-340, 0, -100); // move the object within canvas
+  p5.translate(-440, 0, -100); // move the object within canvas
   p5.push(); // start a new drawing state
   for (let i = 0; i < frequency.length; i++) {
     // default size = 200 when nothing is playing
