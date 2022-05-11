@@ -1,0 +1,18 @@
+# .dockerignore
+# matching is done using Go’s filepath.Match rules
+
+#  ignore the following:
+*/node_modules/
+*/build/
+*/.git/
+.gitignore
+*.md
+!README*.md
+README-secret.md
+.env
+.aws
+#  these files are still sent to the Docker server (daemon) because it needs them to do its job
+#  but the ADD and COPY instructions do not copy them to the image.
+Dockerfile
+.dockerignore
+
