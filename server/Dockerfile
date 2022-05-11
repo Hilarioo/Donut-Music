@@ -16,13 +16,13 @@ RUN npm ci --production
 # copy all local directory files to the container
 COPY . .
 
-RUN npm run start
+RUN npm run build
 
 # NGINX Web Server - minify and compress files
 FROM nginx:alpine as prod
 
 # copy build and share onto nginx default location where it serves files
-COPY --from=build /server/build /usr/share/nginx/index.ts
+COPY --from=build /server/build /usr/share/nginx/html
 
 # port defined in Server.ts
 EXPOSE 3001

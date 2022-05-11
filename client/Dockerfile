@@ -20,12 +20,12 @@ COPY . .
 RUN npm run build
 
 # NGINX Web Server - minify and compress files
-FROM nginx:1.12-alpine as prod
+FROM nginx:alpine as prod
 
 # copy build and share onto nginx default location where it serves files
 COPY --from=build /client/build /usr/share/nginx/html
 
-EXPOSE 3000
+EXPOSE 80
 
 # run the container (when image is started)
 CMD ["nginx", "-g", "daemon off;"]
