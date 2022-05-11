@@ -1,0 +1,41 @@
+# docker-compose.yml
+# Docker-Compose is used to manage several containers
+# at the same time for the same application by using 
+# YAML file to configure.
+#
+# Documentation: https://docs.docker.com/compose/
+# Reference(s): 
+#     https://www.freecodecamp.org/news/a-beginners-guide-to-docker-how-to-create-a-client-server-side-with-docker-compose-12c8cf0ae0aa/
+#     https://www.youtube.com/watch?v=8VHheCkw-7k&ab_channel=Docker
+#     https://codefresh.io/docker-tutorial/not-ignore-dockerignore-2/
+#     https://docs.docker.com/engine/reference/builder/#dockerignore-file
+#     https://www.youtube.com/watch?v=3xDAU5cvi5E&ab_channel=SanjeevThiyagarajan
+
+
+# read only bind mounts (container can read changes but not make them)
+# MAC/LINUX >docker run -it -d -p 3000:3000 -v $(pwd)/src:/app/src:ro --name=client-container client-img
+# WINDOWS   >docker run -it -e CHOKIDAR_USEPOLLING=true -d -p 3000:3000 -v %cd%\src:/app/src:ro --name=client-container client-img
+
+
+# a docker-compose must always start by the version tag.
+version: '3'
+
+# this webapp uses two services (containers): client and server
+services:
+  server:
+    build: server/
+    # command executes once the image is created
+    command: npm run start
+    ports: 
+    # [port we want on our machine]:[port we want to retrieve in the container]
+      - '3001:3001'
+  client:
+    build: client/
+    command: npm run start
+    # container shares its network namespace with the host
+    network_mode: 'host'
+    # 'client' service waits until 'server' service is ready
+    depends_on:
+      - server
+
+
