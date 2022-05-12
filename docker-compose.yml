@@ -32,10 +32,8 @@ services:
   client:
     build: client/
     command: npm run start
-    # container shares its network namespace with the host
-    network_mode: 'host'
-    # 'client' service waits until 'server' service is ready
-    depends_on:
-      - server
+    ports: 
+    # [port we want on our machine]:[port we want to retrieve in the container]
+      - '3000:3000'
 
 

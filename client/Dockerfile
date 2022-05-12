@@ -11,21 +11,16 @@ WORKDIR /client
 COPY package.json package.json
 COPY package-lock.json package-lock.json
 
-# clean install of dependencies - https://docs.npmjs.com/cli/v6/commands/npm-ci
-RUN npm ci --production
-
 # copy all local directory files to the container
 COPY . .
 
+# clean install of dependencies - https://docs.npmjs.com/cli/v6/commands/npm-ci
+RUN npm install
+RUN npm fund
+
 RUN npm run build
 
-# NGINX Web Server - minify and compress files
-FROM nginx:alpine as prod
-
-# copy build and share onto nginx default location where it serves files
-COPY --from=build /client/build /usr/share/nginx/html
-
-EXPOSE 80
+EXPOSE 3000
 
 # run the container (when image is started)
 CMD ["nginx"]
