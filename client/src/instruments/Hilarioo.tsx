@@ -6,8 +6,6 @@
 
 // 3rd party library imports
 import * as Tone from "tone";
-import classNames from "classnames";
-import { List, Range, update } from "immutable";
 import React, { useState } from "react";
 
 // Tone Instruments
@@ -50,7 +48,7 @@ import Gs3 from "../audio/guitar/Gs3.mp3";
 // Components
 import HilariooFeatures from "./components/HilariooFeatures";
 // project imports
-import { Instrument, InstrumentProps } from "../Instruments";
+import { Instrument } from "../Instruments";
 
 /** ------------------------------------------------------------------------ **
  * Contains implementation of components for Guitar.

@@ -1,12 +1,9 @@
 // 3rd party library imports
 import * as Tone from 'tone';
-import classNames from 'classnames';
-import { List, Range } from 'immutable';
 import React from 'react';
 
 // project imports
-import { Instrument, InstrumentProps } from '../Instruments';
-import { Filter, Frequency, NoiseSynth, Part, Synth, PolySynth, FrequencyEnvelope} from 'tone';
+import { Instrument } from '../Instruments';
 
 // setup drum and hi-hat, no envelope needed
 const drum = new Tone.MembraneSynth().toDestination();

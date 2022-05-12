@@ -8,10 +8,6 @@ import React, {useEffect} from 'react';
 
 import {Instrument, InstrumentProps} from '../Instruments';
 import {OmniOscillatorOptions} from "tone/Tone/source/oscillator/OscillatorInterface";
-import Button from "@mui/material/Button";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
 import {RecursivePartial} from "tone/Tone/core/util/Interface";
 
 //Importing Violin B&W Template
