@@ -28,4 +28,4 @@ COPY --from=build /server/build /usr/share/nginx/html
 EXPOSE 3001
 
 # run the container (when image is started)
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx"]
