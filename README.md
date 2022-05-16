@@ -1,7 +1,6 @@
 
 # 🍩 Donut Music
 
-# sodaChat
 ![Travis (.com)](https://travis-ci.com/rinaykumar/word-blast.svg?branch=master)
 ![GitHub language count](https://img.shields.io/github/languages/count/Hilarioo/Donut-Music)
 ![GitHub top language](https://img.shields.io/github/languages/top/Hilarioo/Donut-Music)
