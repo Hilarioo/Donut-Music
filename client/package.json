@@ -1,7 +1,6 @@
 {
-  "name": "lambdavibe",
+  "name": "donutmusic",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@carbon/icons-react": "^10.36.0",
     "@emotion/react": "^11.9.0",
@@ -60,6 +59,5 @@
     "@types/carbon__icons-react": "^10.31.1",
     "@types/react-router-dom": "^5.1.8",
     "autoprefixer": "^10.4.4"
-  },
-  "proxy": "http://localhost:3001"
+  }
 }

@@ -32,7 +32,7 @@ export async function initServer(port: number): Promise<Server> {
 
   // FIXME: production release
   // httpServer.listen(port, 'localhost');
-  httpServer.listen(3002, 'localhost');
+  httpServer.listen(3001, 'localhost');
 
   const server = new Server({
     path: WS_PATH,

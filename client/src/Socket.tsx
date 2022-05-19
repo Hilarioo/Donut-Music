@@ -4,7 +4,7 @@ const SOCKET_URL = "ws://localhost:3001";
 
 const SOCKET_OPTS = {
   transports: ["websocket"],
-  path: "/ws",
+  path: "/socket.io",
   autoConnect: true,
   reconnection: true,
   timeout: 10000,
