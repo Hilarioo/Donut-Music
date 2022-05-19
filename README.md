@@ -1,25 +1,22 @@
 
 # 🍩 Donut Music
-
-![Travis (.com)](https://travis-ci.com/rinaykumar/word-blast.svg?branch=master)
-![GitHub language count](https://img.shields.io/github/languages/count/Hilarioo/Donut-Music)
-![GitHub top language](https://img.shields.io/github/languages/top/Hilarioo/Donut-Music)
-![GitHub contributors](https://img.shields.io/github/contributors/Hilarioo/Donut-Music)
-![GitHub](https://img.shields.io/github/license/Hilarioo/Donut-Music)
-
-[https://[insert-link-here.com](https://google.com)
 <br />
 <sub><sup>Best viewed on a laptop/desktop.</sup></sub>
 
-Interactive instruments with visualizers.
-
-![hilarioo-instruments demo](client/src/videos/hilarioo-instruments-demo.gif)
-
-
+## Web App Summary 
 Donut Music 🍩 is a full-stack web application built with TypeScript, React + Redux, Node.js, p5.js, tone.js, socket.io, and sqlite3.
 It features a violin, guitar, drums, and flute as instruments and four unique visualizers. Our visualizers react to the amps, hertz, and/or speed of the song or key playing. 
 
-Yes! We have songs within our database that holds metadata like the songs artist, publisher, song title, and notes. It's dockerized into two containers (client & server), then called by docker-compose. The client docker is optimized using an nginx template on the build only. Lastly, an AWS EC2 instance allows us to showcase this project to the world(: 
+Yes! We have songs within our database that holds metadata like the songs artist, publisher, song title, and notes. It's dockerized into two containers (client & server), then called by docker-compose. The client docker is optimized using an nginx template on the build only. 
+
+Im currently working on creating a repo through AWS ECR and then deploying with AWS EC2(: [.....in progress] 
+
+## Demo
+<img src="/client/src/videos/hilarioo-instruments-demo.gif" width="70%" />
+
+
+### Collaborator(s)
+[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?label=Jose-gonzalez&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/hilariooo/)
 
 
 ### Local Install
